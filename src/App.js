@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Fragment, useState } from "react";
+import Header from "./components/Header";
+import Fruta from "./components/Fruta";
+import Footer from "./components/Footer";
 
 function App() {
+  const [frutas, setFrutas] = useState([
+    { id: 1, nombre: "Manzanas", cantidad: "1 KG", precio: 200 },
+    { id: 2, nombre: "Peras", cantidad: "1 KG", precio: 150 },
+    { id: 3, nombre: "Naranjas", cantidad: "1 KG", precio: 100 },
+    { id: 4, nombre: "Mandarinas", cantidad: "1 KG", precio: 70 },
+    { id: 5, nombre: "Pomelos", cantidad: "1 KG", precio: 100 },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Header />
+      {frutas.map((fruta) => {
+        return <Fruta fruta={fruta} />;
+      })}
+      <Footer />
+    </Fragment>
   );
 }
 
